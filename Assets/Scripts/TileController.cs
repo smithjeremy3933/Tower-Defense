@@ -8,12 +8,14 @@ public class TileController : MonoBehaviour
     public Graph graph;
 
     public Pathfinder pathfinder;
+    public EnemySpawner enemySpawner;
     public int startX = 0;
     public int startY = 0;
     public int goalX = 6;
     public int goalY = 5;
+    float secondsBetweenSpawnTime = 2f;
 
-    void Start()
+    void Awake()
     {
         if (mapData != null && graph != null)
         {
@@ -27,12 +29,13 @@ public class TileController : MonoBehaviour
                 graphView.Init(graph);
             }
 
-            if (graph.IsWithinBounds(startX, startY) && graph.IsWithinBounds(goalX, goalY) && pathfinder != null)
+            if (graph.IsWithinBounds(startX, startY) && graph.IsWithinBounds(goalX, goalY) && pathfinder != null && enemySpawner != null)
             {
                 Node startNode = graph.nodes[startX, startY];
                 Node goalNode = graph.nodes[goalX, goalY];
                 pathfinder.Init(graph, graphView, startNode, goalNode);
                 pathfinder.SearchRoutine();
+                StartCoroutine(enemySpawner.Init(startNode, secondsBetweenSpawnTime));
             }
         }
     }

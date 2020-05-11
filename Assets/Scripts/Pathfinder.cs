@@ -12,6 +12,7 @@ public class Pathfinder : MonoBehaviour
     PriorityQueue<Node> m_frontierNodes;
     List<Node> m_exploredNodes;
     List<Node> m_pathNodes;
+    public List<Node> PathNodes { get { return m_pathNodes; } }
 
     public Color startColor = Color.green;
     public Color goalColor = Color.red;
