@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] float secondsBetweenSpawnTime = 10f;
-    [SerializeField] GameObject enemyViewPrefab;
+    [SerializeField] EnemyMovement enemyViewPrefab;
 
     public IEnumerator Init(Node startNode, float secondsBetweenSpawntime)
     {

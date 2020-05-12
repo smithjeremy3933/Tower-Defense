@@ -5,6 +5,7 @@ using UnityEngine;
 public class NodeView : MonoBehaviour
 {
     public GameObject tile;
+    [SerializeField] GameObject TowerViewPrefab;
     Node m_node;
 
 
@@ -38,5 +39,14 @@ public class NodeView : MonoBehaviour
     public void ColorNode(Color color)
     {
         ColorNode(color, tile);
+    }
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0) && m_node.nodeType != NodeType.Blocked)
+        {
+            Instantiate(TowerViewPrefab, m_node.position, Quaternion.identity);
+        }
+      
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    Vector3 m_currentPosition; 
+    public Vector3 CurrentPosition { get { return m_currentPosition; } }
+
+
     void Start()
     {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
@@ -12,8 +16,11 @@ public class EnemyMovement : MonoBehaviour
         {
             StartCoroutine(FollowPath(path));
         }
-        Debug.Log(path);
 
+    }
+
+    private void Update()
+    {
     }
 
     IEnumerator FollowPath(List<Node> path)
@@ -21,6 +28,7 @@ public class EnemyMovement : MonoBehaviour
         foreach (Node node in path)
         {
             transform.position = node.position;
+            m_currentPosition = node.position;
             yield return new WaitForSeconds(2f);
         }
     }

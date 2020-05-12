@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5938227072574467711}
   - component: {fileID: 906603632436465476}
+  - component: {fileID: 4343333450045023849}
   m_Layer: 0
   m_Name: NodeView
   m_TagString: Untagged
@@ -45,7 +46,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 8954424373264569025}
+  TowerViewPrefab: {fileID: 978218062706076963, guid: e7d674e1bfab7ad499c2003a9035e04f,
+    type: 3}
   borderSize: 0.042
+--- !u!65 &4343333450045023849
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3870903317952998007}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9828396, y: 0.02663207, z: 1}
+  m_Center: {x: -0.008580208, y: -0.006520629, z: 0}
 --- !u!1001 &8954424373264602209
 PrefabInstance:
   m_ObjectHideFlags: 0
