@@ -6,6 +6,7 @@ public class Pathfinder : MonoBehaviour
 {
     Node m_startNode;
     Node m_goalNode;
+    public Node GoalNode { get { return m_goalNode; } }
     Graph m_graph;
     GraphView m_graphView;
 

@@ -21,7 +21,11 @@ public class GameManager : MonoBehaviour
     public bool HasLevelFinished { get => m_hasLevelFinished; set => m_hasLevelFinished = value; }
     public TileController tileController;
 
-    float delay = 2f;
+    public float delay = 2f;
+    public int lives = 1;
+    public UnityEvent startLevelEvent;
+    public UnityEvent playLevelEvent;
+    public UnityEvent endLevelEvent;
 
 
     private void Start()
@@ -48,6 +52,11 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        if (startLevelEvent != null)
+        {
+            startLevelEvent.Invoke();
+        }
+
     }
 
     // Gameplay Stage.
@@ -58,20 +67,49 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         tileController.InitMap();
 
+        if (playLevelEvent != null)
+        {
+            playLevelEvent.Invoke();
+        }
+
         while (!m_isGameOver)
         {
             // Check for Game Over condition
             // Win?
+            m_isGameOver = IsWinner();
+
             // Lose?
+            m_isGameOver = IsLoser();
 
             // m_isGameOver = true
             yield return null;
         }
+        m_isGamePLaying = false;
+    }
+
+    private bool IsLoser()
+    {
+        if (lives <= 0)
+        {
+            return true;
+
+        }
+        return false;
+    }
+
+    private bool IsWinner()
+    {
+        return false;
     }
 
     // End Stage after gameplay is complete.
     IEnumerator EndLevelRoutine()
     {
+        Debug.Log("END LEVEL");
+        if (endLevelEvent != null)
+        {
+            endLevelEvent.Invoke();
+        }
 
         while (!m_hasLevelFinished)
         {
