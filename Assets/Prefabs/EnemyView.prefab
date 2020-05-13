@@ -102,6 +102,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2676973879719465731}
   - component: {fileID: 343818245425479625}
+  - component: {fileID: 7565330606033319927}
+  - component: {fileID: 6211521551400823448}
   m_Layer: 0
   m_Name: EnemyView
   m_TagString: Untagged
@@ -136,3 +138,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee91f2435dc96f24c93a79d7b13c1cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7565330606033319927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676973879719465728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14b1635d43c655a41b38ccb83989a280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &6211521551400823448
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676973879719465728}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -99,7 +99,6 @@ public class Pathfinder : MonoBehaviour
                 if (m_frontierNodes.Contains(m_goalNode))
                 {
                     m_pathNodes = GetPathNodes(m_goalNode);
-                    Debug.Log(m_pathNodes.Count);
                     if (exitOnGoal)
                     {
                         isComplete = true;

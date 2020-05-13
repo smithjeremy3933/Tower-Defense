@@ -46,6 +46,7 @@ public class NodeView : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && m_node.nodeType != NodeType.Blocked)
         {
             Instantiate(TowerViewPrefab, m_node.position, Quaternion.identity);
+            m_node.nodeType = NodeType.Blocked;
         }
       
     }

@@ -15,7 +15,7 @@ public class TileController : MonoBehaviour
     public int goalY = 5;
     float secondsBetweenSpawnTime = 2f;
 
-    void Awake()
+    public void InitMap()
     {
         if (mapData != null && graph != null)
         {

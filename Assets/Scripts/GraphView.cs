@@ -19,7 +19,7 @@ public class GraphView : MonoBehaviour
 
         foreach (Node n in graph.nodes)
         {
-            GameObject instance = Instantiate(nodeViewPrefab, Vector3.zero, Quaternion.identity);
+            GameObject instance = Instantiate(nodeViewPrefab, Vector3.zero, Quaternion.identity, graph.transform);
             NodeView nodeView = instance.GetComponent<NodeView>();
 
             if (nodeView != null)
