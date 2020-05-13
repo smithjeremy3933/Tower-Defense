@@ -17,9 +17,12 @@ public class EnemySpawner : MonoBehaviour
 
     public IEnumerator Init(Node startNode, float secondsBetweenSpawntime)
     {
-
+        while (true)
+        {
             Instantiate(enemyViewPrefab, startNode.position, Quaternion.identity, this.transform);
             yield return new WaitForSeconds(secondsBetweenSpawnTime);
+        }
+
 
     }
 }
