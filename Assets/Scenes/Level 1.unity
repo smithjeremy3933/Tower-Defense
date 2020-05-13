@@ -364,9 +364,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f32223b7b3be4a54f822c0f8315852dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsBetweenSpawnTime: 4
-  enemyViewPrefab: {fileID: 343818245425479625, guid: d716a111229257a47b62777c3b65060a,
+  secondsBetweenSpawnTime: 7
+  enemyViewPrefab: {fileID: 2676973879719465728, guid: d716a111229257a47b62777c3b65060a,
     type: 3}
+  scaleTime: 0.3
+  delay: 1
+  easeType: 17
 --- !u!4 &191341391
 Transform:
   m_ObjectHideFlags: 0

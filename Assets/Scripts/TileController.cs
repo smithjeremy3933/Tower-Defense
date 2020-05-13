@@ -35,7 +35,8 @@ public class TileController : MonoBehaviour
                 Node goalNode = graph.nodes[goalX, goalY];
                 pathfinder.Init(graph, graphView, startNode, goalNode);
                 pathfinder.SearchRoutine();
-                StartCoroutine(enemySpawner.Init(startNode, secondsBetweenSpawnTime));
+                StartCoroutine(enemySpawner.Init(startNode, enemySpawner.secondsBetweenSpawnTime));
+                
             }
         }
     }
