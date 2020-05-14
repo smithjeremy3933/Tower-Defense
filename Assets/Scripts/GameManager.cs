@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,14 +24,23 @@ public class GameManager : MonoBehaviour
 
     public float delay = 2f;
     public int lives = 1;
+    public int cash = 1000;
     public UnityEvent startLevelEvent;
     public UnityEvent playLevelEvent;
     public UnityEvent endLevelEvent;
+    [SerializeField] Text livesText;
+    [SerializeField] Text cashText;
 
 
     private void Start()
     {
         StartCoroutine("RunGameLoop");
+    }
+
+    private void Update()
+    {
+        DisplayLives();
+        DisplayCash();
     }
 
     IEnumerator RunGameLoop()
@@ -66,6 +76,7 @@ public class GameManager : MonoBehaviour
         m_isGamePLaying = true;
         yield return new WaitForSeconds(delay);
         tileController.InitMap();
+
 
         if (playLevelEvent != null)
         {
@@ -127,6 +138,18 @@ public class GameManager : MonoBehaviour
     public void PlayLevel()
     {
         m_hasLevelStarted = true;
+    }
+
+    private void DisplayLives()
+    {
+        int currentLives = lives;
+        livesText.text = "Lives: " + currentLives.ToString();
+    }
+
+    private void DisplayCash()
+    {
+        int currentCash = cash;
+        cashText.text = "Cash: " + "$" + currentCash.ToString();
     }
 }
 

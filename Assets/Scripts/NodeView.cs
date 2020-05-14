@@ -5,12 +5,26 @@ using UnityEngine;
 public class NodeView : MonoBehaviour
 {
     public GameObject tile;
-    [SerializeField] GameObject TowerViewPrefab;
     Node m_node;
 
 
     [Range(0, 0.5f)]
     public float borderSize = 0.15f;
+
+
+    private void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0) && m_node.nodeType != NodeType.Blocked)
+        {
+            SpawnTowerAtNode();
+        }
+
+    }
+
+    private void SpawnTowerAtNode()
+    {
+        FindObjectOfType<TowerFactory>().SpawnTower(m_node);
+    }
 
     public void Init(Node node)
     {
@@ -41,13 +55,4 @@ public class NodeView : MonoBehaviour
         ColorNode(color, tile);
     }
 
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(0) && m_node.nodeType != NodeType.Blocked)
-        {
-            Instantiate(TowerViewPrefab, m_node.position, Quaternion.identity);
-            m_node.nodeType = NodeType.Blocked;
-        }
-      
-    }
 }
