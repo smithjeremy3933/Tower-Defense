@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     public float delay = 2f;
     public int lives = 1;
-    public int cash = 1000;
+    public int cashAmount = 1000;
     public UnityEvent startLevelEvent;
     public UnityEvent playLevelEvent;
     public UnityEvent endLevelEvent;
@@ -148,7 +148,7 @@ public class GameManager : MonoBehaviour
 
     private void DisplayCash()
     {
-        int currentCash = cash;
+        int currentCash = cashAmount;
         cashText.text = "Cash: " + "$" + currentCash.ToString();
     }
 }

@@ -75,7 +75,6 @@ public class EnemyMovement : MonoBehaviour
     {
         Destroy(gameObject);
         gameManager.lives--;
-        Debug.Log(gameManager.lives);
     }
 
 }

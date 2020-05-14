@@ -6,7 +6,6 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] Transform turret;
     [SerializeField] float attackRange = 10f;
-    [SerializeField] int towerCost = 200;
     [SerializeField] Transform targetEnemy;
     [SerializeField] ParticleSystem projectileParticle;
    

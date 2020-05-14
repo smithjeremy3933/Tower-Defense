@@ -9,7 +9,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject enemyViewPrefab;
     GameManager gameManager;
     public float scaleTime = 0.3f;
-    public float delay = 1f;
     public iTween.EaseType easeType = iTween.EaseType.easeInExpo;
 
     private void Awake()

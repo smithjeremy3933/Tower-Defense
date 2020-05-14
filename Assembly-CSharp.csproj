@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\MapData\Pathfinder.cs" />
     <Compile Include="Assets\Scripts\MapData\TileController.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower.cs" />
+    <Compile Include="Assets\Scripts\Tower\TowerButton.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerFactory.cs" />
     <Compile Include="Assets\Scripts\Utility\PriorityQueue.cs" />
     <None Include="Assets\Level 1.txt" />

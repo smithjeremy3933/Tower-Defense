@@ -6,10 +6,13 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] int healthPoints = 100;
+    Enemy enemy;
+    GameManager gameManager;
 
     void Start()
     {
-
+        gameManager = FindObjectOfType<GameManager>();
+        enemy = FindObjectOfType<Enemy>();
     }
 
     private void OnParticleCollision(GameObject other)
@@ -24,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
     private void KillEnemy()
     {
         Destroy(gameObject);
+        gameManager.cashAmount += enemy.enemyValue;
     }
 
     void ProcessHit()
