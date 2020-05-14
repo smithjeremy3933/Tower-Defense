@@ -60,23 +60,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\EndScreen.cs" />
-    <Compile Include="Assets\Scripts\EnemyHealth.cs" />
-    <Compile Include="Assets\Scripts\EnemyMovement.cs" />
-    <Compile Include="Assets\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Graph.cs" />
-    <Compile Include="Assets\Scripts\GraphView.cs" />
-    <Compile Include="Assets\Scripts\MapData.cs" />
-    <Compile Include="Assets\Scripts\Node.cs" />
-    <Compile Include="Assets\Scripts\NodeView.cs" />
-    <Compile Include="Assets\Scripts\Pathfinder.cs" />
-    <Compile Include="Assets\Scripts\PriorityQueue.cs" />
-    <Compile Include="Assets\Scripts\ScreenFader.cs" />
-    <Compile Include="Assets\Scripts\TileController.cs" />
-    <Compile Include="Assets\Scripts\Tower.cs" />
-    <Compile Include="Assets\Scripts\TowerFactory.cs" />
+    <Compile Include="Assets\Scripts\GameScreen\CameraController.cs" />
+    <Compile Include="Assets\Scripts\GameScreen\EndScreen.cs" />
+    <Compile Include="Assets\Scripts\GameScreen\ScreenFader.cs" />
+    <Compile Include="Assets\Scripts\MapData\Graph.cs" />
+    <Compile Include="Assets\Scripts\MapData\GraphView.cs" />
+    <Compile Include="Assets\Scripts\MapData\MapData.cs" />
+    <Compile Include="Assets\Scripts\MapData\Node.cs" />
+    <Compile Include="Assets\Scripts\MapData\NodeView.cs" />
+    <Compile Include="Assets\Scripts\MapData\Pathfinder.cs" />
+    <Compile Include="Assets\Scripts\MapData\TileController.cs" />
+    <Compile Include="Assets\Scripts\Tower\Tower.cs" />
+    <Compile Include="Assets\Scripts\Tower\TowerFactory.cs" />
+    <Compile Include="Assets\Scripts\Utility\PriorityQueue.cs" />
     <None Include="Assets\Level 1.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/smith/Desktop/Unity-Practice/Tower Defense/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

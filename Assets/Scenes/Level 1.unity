@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e467cd04c5e094e9328e8c529699d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TowerViewPrefab: {fileID: 978218062706076963, guid: e7d674e1bfab7ad499c2003a9035e04f,
+  TowerViewPrefab: {fileID: 6483230601314416922, guid: be2a3540d9d92284c8cd8b15d8305531,
     type: 3}
   towerParentTranform: {fileID: 1403589748}
   scaleTime: 0.3
