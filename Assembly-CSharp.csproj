@@ -64,10 +64,12 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\FireBullet.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameScreen\CameraController.cs" />
     <Compile Include="Assets\Scripts\GameScreen\EndScreen.cs" />
     <Compile Include="Assets\Scripts\GameScreen\ScreenFader.cs" />
+    <Compile Include="Assets\Scripts\IceBullet.cs" />
     <Compile Include="Assets\Scripts\MapData\Graph.cs" />
     <Compile Include="Assets\Scripts\MapData\GraphView.cs" />
     <Compile Include="Assets\Scripts\MapData\MapData.cs" />

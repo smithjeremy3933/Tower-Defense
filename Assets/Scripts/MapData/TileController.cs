@@ -13,7 +13,10 @@ public class TileController : MonoBehaviour
     public int startY = 0;
     public int goalX = 6;
     public int goalY = 5;
+    Node m_startNode;
     float secondsBetweenSpawnTime = 2f;
+
+    public Node StartNode { get => m_startNode; }
 
     public void InitMap()
     {
@@ -32,6 +35,7 @@ public class TileController : MonoBehaviour
             if (graph.IsWithinBounds(startX, startY) && graph.IsWithinBounds(goalX, goalY) && pathfinder != null && enemySpawner != null)
             {
                 Node startNode = graph.nodes[startX, startY];
+                m_startNode = startNode;
                 Node goalNode = graph.nodes[goalX, goalY];
                 pathfinder.Init(graph, graphView, startNode, goalNode);
                 pathfinder.SearchRoutine();

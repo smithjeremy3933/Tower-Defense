@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7448198521927946840}
   - component: {fileID: 622853301582980309}
   - component: {fileID: 4878160022776976582}
+  - component: {fileID: 114067610681293300}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -3570,7 +3571,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3623,7 +3624,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4698,3 +4699,16 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &114067610681293300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411652328788479707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1abeca2823650b1448406207c2f49957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1

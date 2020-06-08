@@ -8,12 +8,14 @@ public class Tower : MonoBehaviour
     [SerializeField] float attackRange = 10f;
     [SerializeField] Transform targetEnemy;
     [SerializeField] ParticleSystem projectileParticle;
+    public int towerDamage = 1;
    
     void Update()
     {
         SetTargetEnemy();
         if (targetEnemy)
         {
+            EnemyHealth targetHealth = targetEnemy.GetComponent<EnemyHealth>();
             turret.LookAt(targetEnemy);
             FireAtEnemy();
         }

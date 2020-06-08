@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee91f2435dc96f24c93a79d7b13c1cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1.5
   delay: 0
   movementDelay: 0.1
   easeType: 17
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14b1635d43c655a41b38ccb83989a280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 10
+  healthPoints: 8
 --- !u!54 &6211521551400823448
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     bool m_hasLevelStarted = false;
+
+    bool m_hasLevelTwoStarted = false;
 
     bool m_isGamePLaying = false;
 
@@ -21,15 +24,21 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver { get => m_isGameOver; set => m_isGameOver = value; }
     public bool HasLevelFinished { get => m_hasLevelFinished; set => m_hasLevelFinished = value; }
     public TileController tileController;
+    public EnemySpawner enemySpawner;
 
     public float delay = 2f;
     public int lives = 1;
     public int cashAmount = 1000;
+    public int levelOneEnemyCount = 3;
+    public int levelTwoEnemyCount = 3;
+
     public UnityEvent startLevelEvent;
     public UnityEvent playLevelEvent;
+    public UnityEvent playLevelTwoEvent;
     public UnityEvent endLevelEvent;
     [SerializeField] Text livesText;
     [SerializeField] Text cashText;
+    List<EnemyHealth> enemies;
 
 
     private void Start()
@@ -41,12 +50,33 @@ public class GameManager : MonoBehaviour
     {
         DisplayLives();
         DisplayCash();
+        enemies = FindObjectsOfType<EnemyHealth>().ToList();
+        ControlTime();
+    }
+
+    private void ControlTime()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && lives > 0 && enemies.Count > 0)
+        {
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        }
     }
 
     IEnumerator RunGameLoop()
     {
         yield return StartCoroutine("StartLevelRoutine");
         yield return StartCoroutine("PlayLevelRoutine");
+        if (lives > 0)
+        {
+            yield return StartCoroutine("PlayLevelTwoRoutine");
+        }
         yield return StartCoroutine("EndLevelRoutine");
     }
 
@@ -59,6 +89,7 @@ public class GameManager : MonoBehaviour
             // Show start screen.
             // User Presses button to start.
             // HasLevelStarted = true.
+            
             yield return null;
         }
 
@@ -72,8 +103,9 @@ public class GameManager : MonoBehaviour
     // Gameplay Stage.
     IEnumerator PlayLevelRoutine()
     {
-        Debug.Log("PLAY LEVEL");
+        Debug.Log("PLAY LEVEL 1");
         m_isGamePLaying = true;
+        m_hasLevelStarted = true;
         yield return new WaitForSeconds(delay);
         tileController.InitMap();
 
@@ -81,6 +113,35 @@ public class GameManager : MonoBehaviour
         if (playLevelEvent != null)
         {
             playLevelEvent.Invoke();
+        }
+
+        while (!m_isGameOver)
+        {
+            // Check for Game Over condition
+            // Win?
+            if (enemies.Count == 0 && levelOneEnemyCount == 0)
+            {
+                break;
+            }
+
+            // Lose?
+            m_isGameOver = IsLoser();
+
+            // m_isGameOver = true
+            yield return null;
+        }
+     
+    }
+
+    IEnumerator PlayLevelTwoRoutine()
+    {
+        Debug.Log("START LEVEL 2");
+        yield return new WaitForSeconds(delay);
+        StartCoroutine(enemySpawner.InitLevelTwo(tileController.StartNode, 3f));
+
+        if (playLevelTwoEvent != null)
+        {
+            playLevelTwoEvent.Invoke();
         }
 
         while (!m_isGameOver)
@@ -98,25 +159,11 @@ public class GameManager : MonoBehaviour
         m_isGamePLaying = false;
     }
 
-    private bool IsLoser()
-    {
-        if (lives <= 0)
-        {
-            return true;
-
-        }
-        return false;
-    }
-
-    private bool IsWinner()
-    {
-        return false;
-    }
-
     // End Stage after gameplay is complete.
     IEnumerator EndLevelRoutine()
     {
         Debug.Log("END LEVEL");
+        Time.timeScale = 0;
         if (endLevelEvent != null)
         {
             endLevelEvent.Invoke();
@@ -126,6 +173,7 @@ public class GameManager : MonoBehaviour
         {
             yield return null;
         }
+   
         RestartLevel();
     }
 
@@ -133,6 +181,7 @@ public class GameManager : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+        Time.timeScale = 1;
     }
 
     public void PlayLevel()
@@ -150,6 +199,21 @@ public class GameManager : MonoBehaviour
     {
         int currentCash = cashAmount;
         cashText.text = "Cash: " + "$" + currentCash.ToString();
+    }
+
+    private bool IsLoser()
+    {
+        if (lives <= 0)
+        {
+            return true;
+
+        }
+        return false;
+    }
+
+    private bool IsWinner()
+    {
+        return false;
     }
 }
 

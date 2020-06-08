@@ -13,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public float movementDelay = 0.5f;
     public iTween.EaseType easeType = iTween.EaseType.easeInOutExpo;
     bool isMoving = false;
+    bool isSlowed = false;
 
 
     void Start()
@@ -40,6 +41,14 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.name == "IceBullet" && !isSlowed)
+        {
+            StartCoroutine(SlowMovement());
+        }
+    }
+
 
 
     public IEnumerator FollowPath(List<Node> path)
@@ -48,6 +57,7 @@ public class EnemyMovement : MonoBehaviour
         {
             if (gameObject != null)
             {
+                float slowedSpeed = moveSpeed * 0.5f;
                 isMoving = true;
                 yield return new WaitForSeconds(movementDelay);
                 iTween.MoveTo(gameObject, iTween.Hash(
@@ -56,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
                     "z", node.position.z,
                     "delay", delay,
                     "easetype", easeType,
-                    "speed", moveSpeed
+                    "speed", isSlowed ? slowedSpeed : moveSpeed
                 ));
 
                 while (Vector3.Distance(node.position, transform.position) > 0.01f)
@@ -75,6 +85,13 @@ public class EnemyMovement : MonoBehaviour
     {
         Destroy(gameObject);
         gameManager.lives--;
+    }
+
+    IEnumerator SlowMovement()
+    {
+        isSlowed = true;
+        yield return new WaitForSeconds(5f);
+        isSlowed = false;
     }
 
 }

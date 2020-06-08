@@ -17,11 +17,25 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        ProcessHit();
+        int damage;
+        if (other.name == "Bullet")
+        {
+            damage = other.GetComponent<FireBullet>().damage;
+        }
+        else if (other.name == "IceBullet")
+        {
+            damage = other.GetComponent<IceBullet>().damage;
+        }
+        else
+        {
+            damage = 1;
+        }
+        ProcessHit(damage);
         if (healthPoints < 1)
         {
             KillEnemy();
         }
+        
     }
 
     private void KillEnemy()
@@ -30,9 +44,9 @@ public class EnemyHealth : MonoBehaviour
         gameManager.cashAmount += enemy.enemyValue;
     }
 
-    void ProcessHit()
+    public void ProcessHit(int damage)
     {
-        healthPoints = healthPoints - 1;
+        healthPoints = healthPoints - damage;
 
     }
 }
