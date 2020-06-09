@@ -17,6 +17,8 @@ public class Node : IComparable<Node>
 
     public Vector3 position;
 
+    public bool isPlaceable = true;
+
     public List<Node> neighbors = new List<Node>();
     public float distanceTravled = Mathf.Infinity;
     public float priority;

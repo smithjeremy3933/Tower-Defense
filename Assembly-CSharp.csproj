@@ -64,12 +64,10 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
-    <Compile Include="Assets\Scripts\FireBullet.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameScreen\CameraController.cs" />
     <Compile Include="Assets\Scripts\GameScreen\EndScreen.cs" />
     <Compile Include="Assets\Scripts\GameScreen\ScreenFader.cs" />
-    <Compile Include="Assets\Scripts\IceBullet.cs" />
     <Compile Include="Assets\Scripts\MapData\Graph.cs" />
     <Compile Include="Assets\Scripts\MapData\GraphView.cs" />
     <Compile Include="Assets\Scripts\MapData\MapData.cs" />
@@ -77,6 +75,8 @@
     <Compile Include="Assets\Scripts\MapData\NodeView.cs" />
     <Compile Include="Assets\Scripts\MapData\Pathfinder.cs" />
     <Compile Include="Assets\Scripts\MapData\TileController.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\FireBullet.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\IceBullet.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerButton.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerFactory.cs" />

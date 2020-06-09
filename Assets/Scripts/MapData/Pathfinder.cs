@@ -156,6 +156,7 @@ public class Pathfinder : MonoBehaviour
         while (currentNode != null)
         {
             path.Insert(0, currentNode);
+            currentNode.isPlaceable = false;
             currentNode = currentNode.previous;
         }
 

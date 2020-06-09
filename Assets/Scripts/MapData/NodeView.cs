@@ -14,7 +14,7 @@ public class NodeView : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && m_node.nodeType != NodeType.Blocked)
+        if (Input.GetMouseButtonDown(0) && m_node.nodeType != NodeType.Blocked && m_node.isPlaceable)
         {
             SpawnTowerAtNode();
         }
