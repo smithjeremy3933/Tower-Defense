@@ -7,5 +7,6 @@ public class IceBullet : MonoBehaviour
     public int damage = 1;
     public float speedReduction = 0.5f;
 
+    public float radius = 0;
 
 }

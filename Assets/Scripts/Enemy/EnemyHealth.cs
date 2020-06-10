@@ -18,19 +18,28 @@ public class EnemyHealth : MonoBehaviour
     private void OnParticleCollision(GameObject other)
     {
         int damage;
+        float radius;
         if (other.name == "Bullet")
         {
             damage = other.GetComponent<FireBullet>().damage;
+            radius = other.GetComponent<FireBullet>().radius;
         }
         else if (other.name == "IceBullet")
         {
             damage = other.GetComponent<IceBullet>().damage;
+            radius = other.GetComponent<IceBullet>().radius;
+        }
+        else if (other.name == "LightningBullet")
+        {
+            damage = other.GetComponent<LightningBullet>().damage;
+            radius = other.GetComponent<LightningBullet>().radius;
         }
         else
         {
             damage = 1;
+            radius = 0;
         }
-        ProcessHit(damage);
+        ProcessHit(damage, radius);
         if (healthPoints < 1)
         {
             KillEnemy();
@@ -44,9 +53,31 @@ public class EnemyHealth : MonoBehaviour
         gameManager.cashAmount += enemy.enemyValue;
     }
 
-    public void ProcessHit(int damage)
+    public void ProcessHit(int damage, float radius)
+    {
+        if (radius == 0)
+        {
+            DoDamage(damage);
+        }
+        else
+        {
+            Collider[] cols = Physics.OverlapSphere(transform.position, radius);
+            Debug.Log("number of splashable enemies " + cols.Length);
+            
+            foreach (Collider c in cols)
+            {
+                if (c.GetComponent<EnemyHealth>())
+                {
+                    c.GetComponent<EnemyHealth>().DoDamage(damage);
+                }
+            }
+        }
+
+
+    }
+
+    public void DoDamage(int damage)
     {
         healthPoints = healthPoints - damage;
-
     }
 }

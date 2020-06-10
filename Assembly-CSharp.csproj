@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\MapData\TileController.cs" />
     <Compile Include="Assets\Scripts\Projectiles\FireBullet.cs" />
     <Compile Include="Assets\Scripts\Projectiles\IceBullet.cs" />
+    <Compile Include="Assets\Scripts\Projectiles\LightningBullet.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerButton.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerFactory.cs" />

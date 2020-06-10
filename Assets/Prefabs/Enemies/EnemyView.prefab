@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 7565330606033319927}
   - component: {fileID: 6211521551400823448}
   - component: {fileID: 5843510555070071769}
+  - component: {fileID: 4314551896702509087}
   m_Layer: 0
   m_Name: EnemyView
   m_TagString: Untagged
@@ -185,3 +186,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyValue: 100
+--- !u!136 &4314551896702509087
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676973879719465728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
