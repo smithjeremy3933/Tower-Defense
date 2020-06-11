@@ -8,6 +8,8 @@ public class Tower : MonoBehaviour
     [SerializeField] public float attackRange = 10f;
     [SerializeField] Transform targetEnemy;
     [SerializeField] public ParticleSystem projectileParticle;
+    bool m_isSelected = false;
+    public bool IsSelected { get => m_isSelected; set => m_isSelected = value; }
 
     void Update()
     {

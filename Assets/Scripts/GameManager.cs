@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text cashText;
     [SerializeField] Text levelText;
     [SerializeField] public Text currentTowerName;
+    [SerializeField] public Text currentTowerDamage;
     List<EnemyHealth> enemies;
     int currentLevel;
     float levelDelay = 3f;

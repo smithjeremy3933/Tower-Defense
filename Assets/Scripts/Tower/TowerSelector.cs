@@ -8,6 +8,8 @@ public class TowerSelector : MonoBehaviour
     Graph graph;
     GameManager gameManager;
     Ray ray;
+    Tower previousSelectedTower;
+
 
     private void Start()
     {
@@ -24,16 +26,35 @@ public class TowerSelector : MonoBehaviour
             RaycastHit hit;
             bool hasHit = Physics.Raycast(ray, out hit);
             Node hitTowerNode = graph.GetNodeAt((int)hit.transform.position.x, (int)hit.transform.position.z);
+            if (!towerFactory.nodeTowerMap.ContainsKey(hitTowerNode))
+            {
+                Debug.Log("No tower to select!");
+                return;
+            }
             GameObject selectedGameobject = towerFactory.nodeTowerMap[hitTowerNode];
             Tower selectedTower = selectedGameobject.GetComponent<Tower>();
-            FireBullet fireBullet = selectedTower.projectileParticle.GetComponent<FireBullet>();
-            if (selectedGameobject.name == "FireTowerView(Clone)")
+            if (hasHit && selectedGameobject != null && selectedTower != null && selectedTower.IsSelected == false)
             {
-                gameManager.currentTowerName.text = "Fire Tower";
+                if (previousSelectedTower != null && previousSelectedTower != selectedTower)
+                {
+                    previousSelectedTower.IsSelected = false;
+                }
+                previousSelectedTower = selectedTower;
+                selectedTower.IsSelected = true;
+                if (selectedGameobject.name == "FireTowerView(Clone)")
+                {
+                    gameManager.currentTowerName.text = "Fire Tower";
+                    FireBullet fireBullet = selectedTower.projectileParticle.GetComponent<FireBullet>();
+                    gameManager.currentTowerDamage.text = "DAMAGE: " + fireBullet.damage.ToString();
+                }
+                else
+                {
+                    gameManager.currentTowerName.text = selectedGameobject.name;
+                }
             }
-            else
+            else if (selectedTower == null)
             {
-                gameManager.currentTowerName.text = selectedGameobject.name;
+                return;
             }
             
         }
