@@ -8,5 +8,4 @@ public class IceBullet : MonoBehaviour
     public float speedReduction = 0.5f;
 
     public float radius = 0;
-
 }

@@ -38,7 +38,11 @@ public class GameManager : MonoBehaviour
     public UnityEvent endLevelEvent;
     [SerializeField] Text livesText;
     [SerializeField] Text cashText;
+    [SerializeField] Text levelText;
+    [SerializeField] public Text currentTowerName;
     List<EnemyHealth> enemies;
+    int currentLevel;
+    float levelDelay = 3f;
 
 
     private void Start()
@@ -50,23 +54,9 @@ public class GameManager : MonoBehaviour
     {
         DisplayLives();
         DisplayCash();
+        DisplayLevel();
         enemies = FindObjectsOfType<EnemyHealth>().ToList();
         ControlTime();
-    }
-
-    private void ControlTime()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && lives > 0 && enemies.Count > 0)
-        {
-            if (Time.timeScale == 1)
-            {
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
-        }
     }
 
     IEnumerator RunGameLoop()
@@ -104,6 +94,7 @@ public class GameManager : MonoBehaviour
     IEnumerator PlayLevelRoutine()
     {
         Debug.Log("PLAY LEVEL 1");
+        currentLevel = 1;
         m_isGamePLaying = true;
         m_hasLevelStarted = true;
         yield return new WaitForSeconds(delay);
@@ -136,8 +127,9 @@ public class GameManager : MonoBehaviour
     IEnumerator PlayLevelTwoRoutine()
     {
         Debug.Log("START LEVEL 2");
+        currentLevel = 2;
         yield return new WaitForSeconds(delay);
-        StartCoroutine(enemySpawner.InitLevelTwo(tileController.StartNode, 3f));
+        StartCoroutine(enemySpawner.InitLevelTwo(tileController.StartNode, levelDelay));
 
         if (playLevelTwoEvent != null)
         {
@@ -199,6 +191,30 @@ public class GameManager : MonoBehaviour
     {
         int currentCash = cashAmount;
         cashText.text = "Cash: " + "$" + currentCash.ToString();
+    }
+
+    private void DisplayLevel()
+    {
+        levelText.text = "WAVE: " + currentLevel.ToString();
+        if (levelText.text == null)
+        {
+            levelText.text = "WAVE: 1";
+        }
+    }
+
+    private void ControlTime()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && lives > 0 && enemies.Count > 0)
+        {
+            if (Time.timeScale == 1)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        }
     }
 
     private bool IsLoser()

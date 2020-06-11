@@ -5,9 +5,9 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField] Transform turret;
-    [SerializeField] float attackRange = 10f;
+    [SerializeField] public float attackRange = 10f;
     [SerializeField] Transform targetEnemy;
-    [SerializeField] ParticleSystem projectileParticle;
+    [SerializeField] public ParticleSystem projectileParticle;
 
     void Update()
     {

@@ -99,4 +99,9 @@ public class Graph : MonoBehaviour
 
         return (1.4f * diagonalSteps + straightSteps);
     }
+
+    public Node GetNodeAt(int xIndex, int yIndex)
+    {
+        return nodes[xIndex, yIndex];
+    }
 }

@@ -351,6 +351,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3249585135419434777}
     m_Modifications:
+    - target: {fileID: 114271771541061620, guid: 23ace79e2bd885241aaa7fa28d3f1ce1,
+        type: 3}
+      propertyPath: damage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114271771541061620, guid: 23ace79e2bd885241aaa7fa28d3f1ce1,
+        type: 3}
+      propertyPath: radius
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1563854987536906102, guid: 23ace79e2bd885241aaa7fa28d3f1ce1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -425,6 +435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LightningBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811975483312734715, guid: 23ace79e2bd885241aaa7fa28d3f1ce1,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23ace79e2bd885241aaa7fa28d3f1ce1, type: 3}

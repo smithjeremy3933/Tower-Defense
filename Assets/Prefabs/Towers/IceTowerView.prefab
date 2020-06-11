@@ -202,7 +202,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turret: {fileID: 6483230601314706742}
   attackRange: 10
-  towerCost: 200
   targetEnemy: {fileID: 0}
   projectileParticle: {fileID: 2389196147234088832}
 --- !u!1 &6483230601314416924
@@ -433,10 +432,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 25.000015
       objectReference: {fileID: 0}
+    - target: {fileID: 6607382041462862223, guid: c8d4a045dc791084f9e7ee8981e9ae93,
+        type: 3}
+      propertyPath: radius
+      value: 0.000001
+      objectReference: {fileID: 0}
     - target: {fileID: 8599842669572697077, guid: c8d4a045dc791084f9e7ee8981e9ae93,
         type: 3}
       propertyPath: m_Name
       value: IceBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811975483312734715, guid: c8d4a045dc791084f9e7ee8981e9ae93,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8d4a045dc791084f9e7ee8981e9ae93, type: 3}

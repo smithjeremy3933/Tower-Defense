@@ -9,7 +9,9 @@ public class TowerFactory : MonoBehaviour
     [SerializeField] Transform towerParentTranform;
     [SerializeField] float scaleTime = 0.3f;
     [SerializeField] int towerCost = 200;
+    public Dictionary<Node, GameObject> nodeTowerMap;
     GameManager gameManager;
+  
 
     private void Start()
     {
@@ -32,6 +34,15 @@ public class TowerFactory : MonoBehaviour
             baseNode.nodeType = NodeType.Blocked;
             instance.transform.localScale = Vector3.zero;
             ShowTower(instance);
+            if (nodeTowerMap == null)
+            {
+                nodeTowerMap = new Dictionary<Node, GameObject>();
+                nodeTowerMap[baseNode] = instance;
+            }
+            else
+            {
+                nodeTowerMap[baseNode] = instance;
+            }
         }
         else
         {
