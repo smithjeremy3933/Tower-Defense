@@ -9,7 +9,10 @@ public class TowerSelector : MonoBehaviour
     GameManager gameManager;
     Ray ray;
     Tower previousSelectedTower;
-
+    Tower m_currentTower;
+    int m_currentTowerDamage;
+    public int CurrentTowerDamage { get => m_currentTowerDamage; set => m_currentTowerDamage = value; }
+    public Tower CurrentTower { get => m_currentTower; set => m_currentTower = value; }
 
     private void Start()
     {
@@ -20,7 +23,7 @@ public class TowerSelector : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && towerFactory.nodeTowerMap != null)
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -33,30 +36,57 @@ public class TowerSelector : MonoBehaviour
             }
             GameObject selectedGameobject = towerFactory.nodeTowerMap[hitTowerNode];
             Tower selectedTower = selectedGameobject.GetComponent<Tower>();
+
             if (hasHit && selectedGameobject != null && selectedTower != null && selectedTower.IsSelected == false)
             {
-                if (previousSelectedTower != null && previousSelectedTower != selectedTower)
-                {
-                    previousSelectedTower.IsSelected = false;
-                }
-                previousSelectedTower = selectedTower;
-                selectedTower.IsSelected = true;
-                if (selectedGameobject.name == "FireTowerView(Clone)")
-                {
-                    gameManager.currentTowerName.text = "Fire Tower";
-                    FireBullet fireBullet = selectedTower.projectileParticle.GetComponent<FireBullet>();
-                    gameManager.currentTowerDamage.text = "DAMAGE: " + fireBullet.damage.ToString();
-                }
-                else
-                {
-                    gameManager.currentTowerName.text = selectedGameobject.name;
-                }
+                SelectValidTower(selectedGameobject, selectedTower);
             }
             else if (selectedTower == null)
             {
                 return;
             }
             
+        }
+        else if (Input.GetMouseButtonDown(1) && towerFactory.nodeTowerMap == null)
+        {
+            Debug.Log("No towers to Select!");
+            return;
+        }
+    }
+
+    private void SelectValidTower(GameObject selectedGameobject, Tower selectedTower)
+    {
+        if (previousSelectedTower != null && previousSelectedTower != selectedTower)
+        {
+            previousSelectedTower.IsSelected = false;
+        }
+        previousSelectedTower = selectedTower;
+        selectedTower.IsSelected = true;
+        m_currentTower = selectedTower;
+        if (selectedGameobject.name == "FireTowerView(Clone)")
+        {
+            gameManager.currentTowerName.text = "Fire Tower";
+            FireBullet fireBullet = selectedTower.projectileParticle.GetComponent<FireBullet>();
+            m_currentTowerDamage = fireBullet.damage;
+            gameManager.currentTowerDamage.text = "DAMAGE: " + fireBullet.damage.ToString();
+        }
+        else if (selectedGameobject.name == "IceTowerView(Clone)")
+        {
+            gameManager.currentTowerName.text = "Ice Tower";
+            IceBullet iceBullet = selectedTower.projectileParticle.GetComponent<IceBullet>();
+            m_currentTowerDamage = iceBullet.damage;
+            gameManager.currentTowerDamage.text = "DAMAGE: " + iceBullet.damage.ToString();
+        }
+        else if (selectedGameobject.name == "LightningTowerView(Clone)")
+        {
+            gameManager.currentTowerName.text = "Lightning Tower";
+            LightningBullet lightningBullet = selectedTower.projectileParticle.GetComponent<LightningBullet>();
+            m_currentTowerDamage = lightningBullet.damage;
+            gameManager.currentTowerDamage.text = "DAMAGE: " + lightningBullet.damage.ToString();
+        }
+        else
+        {
+            gameManager.currentTowerName.text = selectedGameobject.name;
         }
     }
 }

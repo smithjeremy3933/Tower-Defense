@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Tower\TowerButton.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerFactory.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerSelector.cs" />
+    <Compile Include="Assets\Scripts\Tower\TowerUpgradeButton.cs" />
     <Compile Include="Assets\Scripts\Utility\PriorityQueue.cs" />
     <None Include="Assets\Level 1.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
