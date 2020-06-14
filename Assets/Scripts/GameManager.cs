@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     public bool IsGamePLaying { get => m_isGamePLaying; set => m_isGamePLaying = value; }
     public bool IsGameOver { get => m_isGameOver; set => m_isGameOver = value; }
     public bool HasLevelFinished { get => m_hasLevelFinished; set => m_hasLevelFinished = value; }
+
     public TileController tileController;
     public EnemySpawner enemySpawner;
 

@@ -10,9 +10,13 @@ public class TowerSelector : MonoBehaviour
     Ray ray;
     Tower previousSelectedTower;
     Tower m_currentTower;
+    GameObject m_selectedGameobject;
+    Node m_currentNode;
     int m_currentTowerDamage;
     public int CurrentTowerDamage { get => m_currentTowerDamage; set => m_currentTowerDamage = value; }
     public Tower CurrentTower { get => m_currentTower; set => m_currentTower = value; }
+    public GameObject SelectedGameobject { get => m_selectedGameobject; set => m_selectedGameobject = value; }
+    public Node CurrentNode { get => m_currentNode; set => m_currentNode = value; }
 
     private void Start()
     {
@@ -39,6 +43,7 @@ public class TowerSelector : MonoBehaviour
 
             if (hasHit && selectedGameobject != null && selectedTower != null && selectedTower.IsSelected == false)
             {
+                m_currentNode = hitTowerNode;
                 SelectValidTower(selectedGameobject, selectedTower);
             }
             else if (selectedTower == null)
@@ -63,6 +68,7 @@ public class TowerSelector : MonoBehaviour
         previousSelectedTower = selectedTower;
         selectedTower.IsSelected = true;
         m_currentTower = selectedTower;
+        m_selectedGameobject = selectedGameobject;
         if (selectedGameobject.name == "FireTowerView(Clone)")
         {
             gameManager.currentTowerName.text = "Fire Tower";

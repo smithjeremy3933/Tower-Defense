@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Projectiles\LightningBullet.cs" />
     <Compile Include="Assets\Scripts\Tower\Tower.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerButton.cs" />
+    <Compile Include="Assets\Scripts\Tower\TowerDeleteButton.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerFactory.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerSelector.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerUpgradeButton.cs" />

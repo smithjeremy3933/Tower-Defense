@@ -16,7 +16,6 @@ public class Tower : MonoBehaviour
         SetTargetEnemy();
         if (targetEnemy)
         {
-            EnemyHealth targetHealth = targetEnemy.GetComponent<EnemyHealth>();
             if (turret != null)
             {
                 turret.LookAt(targetEnemy);
@@ -73,6 +72,5 @@ public class Tower : MonoBehaviour
         var emissionModule = projectileParticle.emission;
         emissionModule.enabled = isActive;
     }
-
 
 }
