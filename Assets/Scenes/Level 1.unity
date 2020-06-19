@@ -1350,7 +1350,7 @@ MonoBehaviour:
   delay: 2.5
   lives: 1
   cashAmount: 1000
-  levelOneEnemyCount: 3
+  levelOneEnemyCount: 5
   levelTwoEnemyCount: 3
   startLevelEvent:
     m_PersistentCalls:

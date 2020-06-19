@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 622}
   m_MaxSize: {x: 18008, y: 18072}
   vertical: 0
-  controlID: 1397
+  controlID: 1849
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_MinSize: {x: 232, y: 622}
   m_MaxSize: {x: 10002, y: 18072}
   vertical: 1
-  controlID: 1398
+  controlID: 1757
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -151,8 +151,8 @@ MonoBehaviour:
     y: 0
     width: 477
     height: 458
-  m_MinSize: {x: 202, y: 224}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 5}
   m_Panes:
   - {fileID: 5}
@@ -189,21 +189,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: defbffff260f0000580f0000660f0000e40f000022100000
+      m_ExpandedIDs: defbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: TowerDefenseHUD
-        m_OriginalName: TowerDefenseHUD
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -20660
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 0
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 4}
       m_SearchString: 
@@ -232,8 +232,8 @@ MonoBehaviour:
     y: 458
     width: 477
     height: 385
-  m_MinSize: {x: 232, y: 274}
-  m_MaxSize: {x: 10002, y: 10024}
+  m_MinSize: {x: 230, y: 250}
+  m_MaxSize: {x: 10000, y: 10000}
   m_ActualView: {fileID: 7}
   m_Panes:
   - {fileID: 7}
@@ -288,9 +288,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ae0d0000
-    m_LastClickedID: 3502
-    m_ExpandedIDs: 00000000bc0a0000ae0d000000ca9a3b
+    m_SelectedIDs: ba0d0000
+    m_LastClickedID: 3514
+    m_ExpandedIDs: 00000000be0a0000ba0d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -318,7 +318,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000bc0a00001e0d0000580d0000ae0d000000ca9a3b
+    m_ExpandedIDs: 00000000be0a0000ba0d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -343,8 +343,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: f40f0000
-    m_LastClickedInstanceID: 4084
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000b80a0000c00a00009e2c0000a00b000000000000
     m_RenameOverlay:
@@ -392,8 +392,8 @@ MonoBehaviour:
     y: 843
     width: 477
     height: 464
-  m_MinSize: {x: 102, y: 124}
-  m_MaxSize: {x: 4002, y: 4024}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 9}
   m_Panes:
   - {fileID: 9}
@@ -447,10 +447,10 @@ MonoBehaviour:
     y: 0
     width: 1636
     height: 1307
-  m_MinSize: {x: 204, y: 572}
-  m_MaxSize: {x: 4004, y: 12072}
+  m_MinSize: {x: 204, y: 524}
+  m_MaxSize: {x: 4004, y: 12024}
   vertical: 1
-  controlID: 1302
+  controlID: 1829
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -470,8 +470,8 @@ MonoBehaviour:
     y: 0
     width: 1636
     height: 641
-  m_MinSize: {x: 204, y: 224}
-  m_MaxSize: {x: 4004, y: 4024}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -628,8 +628,8 @@ MonoBehaviour:
     y: 1183
     width: 1636
     height: 124
-  m_MinSize: {x: 104, y: 124}
-  m_MaxSize: {x: 4004, y: 4024}
+  m_MinSize: {x: 100, y: 100}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
