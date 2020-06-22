@@ -1,5 +1,7 @@
 # Elemental-Tower-Defense
-A table-top Elemental Tower Defense Game inspired by all the Tower Defense (TD) games on Warcraft III: Reign of Chaos
+A table-top Elemental Tower Defense Game inspired by all the Tower Defense (TD) games on Warcraft III: Reign of Chaos.
+
+![towerDefensePic2](https://user-images.githubusercontent.com/51000275/85250683-1994a280-b40c-11ea-9a92-f3272447a7e6.PNG)
 
 # How to Play
 Use HUD on bottom view current amount of live, current amount of cash, currrent wave, Towers to select, and the currrent selected tower's stats.
