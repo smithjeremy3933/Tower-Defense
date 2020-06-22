@@ -19,6 +19,8 @@ d - "right"
 a - "left"
 s - "down"
 
+![towerDefensePic1](https://user-images.githubusercontent.com/51000275/85250620-ed792180-b40b-11ea-8507-8d06ea5d91d4.PNG)
+
 
 # Credits
 A table-top Elemental Tower Defense Game inspired by all the Tower Defense (TD) games on Warcraft III: Reign of Chaos. Much of my child hood was spent playing that game all the mini-games that clever people made throughout the years. Besides my love of gaming, I wanted to make this game to further learn C# and how to utilize the programming language to do some pretty amazing things on the Unity Engine.
