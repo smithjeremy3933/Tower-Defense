@@ -5,5 +5,4 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public int enemyValue = 100;
-
 }

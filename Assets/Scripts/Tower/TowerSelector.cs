@@ -1,9 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSelector : MonoBehaviour
 {
+    public static event EventHandler<OnTowerSelectedEventArgs> OnTowerSelected;
+    public class OnTowerSelectedEventArgs : EventArgs
+    {
+        public Tower currentTower;
+        public GameObject SelectedTowerGO;
+        public int currentTowerDamage;
+        public Node curentNode;
+    }
+    public int CurrentTowerDamage { get => m_currentTowerDamage; set => m_currentTowerDamage = value; }
+    public Tower CurrentTower { get => m_currentTower; set => m_currentTower = value; }
+    public GameObject SelectedGameobject { get => m_selectedGameobject; set => m_selectedGameobject = value; }
+    public Node CurrentNode { get => m_currentNode; set => m_currentNode = value; }
+
     TowerFactory towerFactory;
     Graph graph;
     GameManager gameManager;
@@ -13,10 +27,6 @@ public class TowerSelector : MonoBehaviour
     GameObject m_selectedGameobject;
     Node m_currentNode;
     int m_currentTowerDamage;
-    public int CurrentTowerDamage { get => m_currentTowerDamage; set => m_currentTowerDamage = value; }
-    public Tower CurrentTower { get => m_currentTower; set => m_currentTower = value; }
-    public GameObject SelectedGameobject { get => m_selectedGameobject; set => m_selectedGameobject = value; }
-    public Node CurrentNode { get => m_currentNode; set => m_currentNode = value; }
 
     private void Start()
     {
@@ -26,6 +36,11 @@ public class TowerSelector : MonoBehaviour
     }
 
     void Update()
+    {
+        SelectTower();
+    }
+
+    private void SelectTower()
     {
         if (Input.GetMouseButtonDown(1) && towerFactory.nodeTowerMap != null)
         {
@@ -50,7 +65,7 @@ public class TowerSelector : MonoBehaviour
             {
                 return;
             }
-            
+
         }
         else if (Input.GetMouseButtonDown(1) && towerFactory.nodeTowerMap == null)
         {
@@ -61,6 +76,41 @@ public class TowerSelector : MonoBehaviour
 
     private void SelectValidTower(GameObject selectedGameobject, Tower selectedTower)
     {
+        ProcessSelection(selectedGameobject, selectedTower);
+
+        switch (selectedGameobject.name)
+        {
+            case "FireTowerView(Clone)":
+                FireBullet fireBullet = selectedTower.projectileParticle.GetComponent<FireBullet>();
+                m_currentTowerDamage = fireBullet.damage;
+                OnTowerSelected?.Invoke(this, new OnTowerSelectedEventArgs {
+                    currentTower = m_currentTower,
+                    SelectedTowerGO = m_selectedGameobject,
+                    curentNode = m_currentNode,
+                    currentTowerDamage = m_currentTowerDamage });
+                gameManager.currentTowerName.text = "Fire Tower";
+                gameManager.currentTowerDamage.text = "DAMAGE: " + fireBullet.damage.ToString();
+                break;
+            case "IceTowerView(Clone)":
+                IceBullet iceBullet = selectedTower.projectileParticle.GetComponent<IceBullet>();
+                m_currentTowerDamage = iceBullet.damage;
+                gameManager.currentTowerName.text = "Ice Tower";
+                gameManager.currentTowerDamage.text = "DAMAGE: " + iceBullet.damage.ToString();
+                break;
+            case "LightningTowerView(Clone)":
+                LightningBullet lightningBullet = selectedTower.projectileParticle.GetComponent<LightningBullet>();
+                m_currentTowerDamage = lightningBullet.damage;
+                gameManager.currentTowerName.text = "Lightning Tower";
+                gameManager.currentTowerDamage.text = "DAMAGE: " + lightningBullet.damage.ToString();
+                break;
+            default:
+                gameManager.currentTowerName.text = selectedGameobject.name;
+                break;
+        }
+    }
+
+    private void ProcessSelection(GameObject selectedGameobject, Tower selectedTower)
+    {
         if (previousSelectedTower != null && previousSelectedTower != selectedTower)
         {
             previousSelectedTower.IsSelected = false;
@@ -69,30 +119,5 @@ public class TowerSelector : MonoBehaviour
         selectedTower.IsSelected = true;
         m_currentTower = selectedTower;
         m_selectedGameobject = selectedGameobject;
-        if (selectedGameobject.name == "FireTowerView(Clone)")
-        {
-            gameManager.currentTowerName.text = "Fire Tower";
-            FireBullet fireBullet = selectedTower.projectileParticle.GetComponent<FireBullet>();
-            m_currentTowerDamage = fireBullet.damage;
-            gameManager.currentTowerDamage.text = "DAMAGE: " + fireBullet.damage.ToString();
-        }
-        else if (selectedGameobject.name == "IceTowerView(Clone)")
-        {
-            gameManager.currentTowerName.text = "Ice Tower";
-            IceBullet iceBullet = selectedTower.projectileParticle.GetComponent<IceBullet>();
-            m_currentTowerDamage = iceBullet.damage;
-            gameManager.currentTowerDamage.text = "DAMAGE: " + iceBullet.damage.ToString();
-        }
-        else if (selectedGameobject.name == "LightningTowerView(Clone)")
-        {
-            gameManager.currentTowerName.text = "Lightning Tower";
-            LightningBullet lightningBullet = selectedTower.projectileParticle.GetComponent<LightningBullet>();
-            m_currentTowerDamage = lightningBullet.damage;
-            gameManager.currentTowerDamage.text = "DAMAGE: " + lightningBullet.damage.ToString();
-        }
-        else
-        {
-            gameManager.currentTowerName.text = selectedGameobject.name;
-        }
     }
 }

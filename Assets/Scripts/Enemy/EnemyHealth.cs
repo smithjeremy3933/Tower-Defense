@@ -6,6 +6,12 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] public int healthPoints = 100;
+    public static event EventHandler<OnEnemyDeathEventArgs> OnEnemyDeath;
+    public class OnEnemyDeathEventArgs : EventArgs
+    {
+        public Enemy enemy;
+    }
+
     Enemy enemy;
     GameManager gameManager;
 
@@ -19,29 +25,28 @@ public class EnemyHealth : MonoBehaviour
     {
         int damage;
         float radius;
-        if (other.name == "Bullet")
+        switch (other.name)
         {
-            damage = other.GetComponent<FireBullet>().damage;
-            radius = other.GetComponent<FireBullet>().radius;
-            ProcessHit(damage, radius);
-        }
-        else if (other.name == "IceBullet")
-        {
-            damage = other.GetComponent<IceBullet>().damage;
-            radius = other.GetComponent<IceBullet>().radius;
-            ProcessHit(damage, radius);
-        }
-        else if (other.name == "LightningBullet")
-        {
-            damage = other.GetComponent<LightningBullet>().damage;
-            radius = other.GetComponent<LightningBullet>().radius;
-            other.GetComponent<LightningBullet>().ProcessHit(damage, radius, healthPoints);
-        }
-        else
-        {
-            damage = 1;
-            radius = 0;
-        }
+            case "Bullet":
+                damage = other.GetComponent<FireBullet>().damage;
+                radius = other.GetComponent<FireBullet>().radius;
+                ProcessHit(damage, radius);
+                break;
+            case "IceBullet":
+                damage = other.GetComponent<IceBullet>().damage;
+                radius = other.GetComponent<IceBullet>().radius;
+                ProcessHit(damage, radius);
+                break;
+            case "LightningBullet":
+                damage = other.GetComponent<LightningBullet>().damage;
+                radius = other.GetComponent<LightningBullet>().radius;
+                other.GetComponent<LightningBullet>().ProcessHit(damage, radius, healthPoints);
+                break;
+            default:
+                damage = 1;
+                radius = 0;
+                break;
+        }      
 
         if (healthPoints < 1)
         {
@@ -53,7 +58,7 @@ public class EnemyHealth : MonoBehaviour
     public void KillEnemy()
     {
         Destroy(gameObject);
-        gameManager.cashAmount += enemy.enemyValue;
+        OnEnemyDeath?.Invoke(this, new OnEnemyDeathEventArgs { enemy = enemy });
     }
 
     public void ProcessHit(int damage, float radius)

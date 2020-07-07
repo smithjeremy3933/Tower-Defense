@@ -1,24 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    Vector3 m_currentPosition; 
+    public static event EventHandler OnEnemyReachedGoal;
     public Vector3 CurrentPosition { get { return m_currentPosition; } }
+
+    Vector3 m_currentPosition;
     Node goalNodePosition;
-    GameManager gameManager;
-    public float moveSpeed = 1.5f;
-    public float delay = 0f;
-    public float movementDelay = 0.5f;
+    float moveSpeed = 1.5f;
+    float delay = 0f;
+    float movementDelay = 0.5f;
     public iTween.EaseType easeType = iTween.EaseType.easeInOutExpo;
     bool isMoving = false;
     bool isSlowed = false;
 
-
     void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        Move();
+    }
+
+    private void Move()
+    {
         Pathfinder pathfinder = FindObjectOfType<Pathfinder>();
         if (pathfinder != null)
         {
@@ -30,7 +35,6 @@ public class EnemyMovement : MonoBehaviour
         {
             StartCoroutine(FollowPath(path));
         }
-
     }
 
     private void Update()
@@ -48,8 +52,6 @@ public class EnemyMovement : MonoBehaviour
             StartCoroutine(SlowMovement());
         }
     }
-
-
 
     public IEnumerator FollowPath(List<Node> path)
     {
@@ -84,7 +86,7 @@ public class EnemyMovement : MonoBehaviour
     public void EnemyReachedGoal()
     {
         Destroy(gameObject);
-        gameManager.lives--;
+        OnEnemyReachedGoal?.Invoke(this, EventArgs.Empty);
     }
 
     IEnumerator SlowMovement()

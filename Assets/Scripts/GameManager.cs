@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine("RunGameLoop");
+        EnemyHealth.OnEnemyDeath += EnemyHealth_OnEnemyDeath;
+        EnemyMovement.OnEnemyReachedGoal += EnemyMovement_OnEnemyReachedGoal;
     }
 
     private void Update()
@@ -169,6 +171,16 @@ public class GameManager : MonoBehaviour
         }
    
         RestartLevel();
+    }
+
+    private void EnemyMovement_OnEnemyReachedGoal(object sender, EventArgs e)
+    {
+        lives--;
+    }
+
+    private void EnemyHealth_OnEnemyDeath(object sender, EnemyHealth.OnEnemyDeathEventArgs e)
+    {
+        cashAmount -= e.enemy.enemyValue;
     }
 
     private void RestartLevel()
